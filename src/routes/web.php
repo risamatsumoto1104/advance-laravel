@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\SessionController;
 use App\Models\Person;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,4 +57,12 @@ Route::get('/softdelete/store', function(){
 Route::get('/softdelete/adsolute', function(){
     $result = Person::onlyTrashed()->forceDelete();
     echo $result;
+});
+
+// UUIDをブラウザで表示する
+Route::get('/uuid', function(){
+    $products = Product::all();
+    foreach($products as $product){
+        echo $product.'<br>';
+    }
 });
